@@ -1,0 +1,7 @@
+{
+  "name": "HLCFirebase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Libro de recetas </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenido">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Libro de recetas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-label>Nombre</ion-label>
+    <ion-input [(ngModel)]="recetaEditando.nombre"></ion-input>
+    <ion-label>Tiempo</ion-label>
+    <ion-input [(ngModel)]="recetaEditando.tiempo"></ion-input>
+    <ion-label>Ingredientes</ion-label>
+    <ion-input [(ngModel)]="recetaEditando.ingredientes"></ion-input>
+    <ion-label>Elaboracion</ion-label>
+    <ion-input [(ngModel)]="recetaEditando.elaboracion"></ion-input>
+
+    <ion-button
+      color="success"
+      fill="outline"
+      class="campoEntrada"
+      (click)="clickBotonInsertar()"
+      >Añadir<ion-icon name="receipt-sharp"></ion-icon>
+    </ion-button>
+    <ion-button
+      color="danger"
+      fill="outline"
+      class="borrarReceta"
+      (click)="clickBotonBorrar()"
+      >Borrar<ion-icon name="trash-sharp"></ion-icon>
+    </ion-button>
+    <ion-button
+      color="secondary"
+      fill="outline"
+      class="modificarReceta"
+      (click)="clickBotonModificar()"
+      >Modificar<ion-icon name="pencil-sharp"></ion-icon
+    ></ion-button>
+
+    <h1>Lista de recetas guardadas</h1>
+    <ion-list>
+      <ion-item
+        *ngFor="let documentReceta of arrayColeccionRecetas"
+        (click)="selectReceta(documentReceta.id, documentReceta.receta)"
+      >
+        <ion-grid>
+          <ion-row>
+            <h2>{{documentReceta.receta.nombre}}</h2>
+          </ion-row>
+          <ion-row>
+            <p><b>Tiempo estimado:</b> <br>{{documentReceta.receta.tiempo}}</p>
+          </ion-row>
+          <ion-row>
+            <p><b>Ingredientes necesarios:</b> <br>{{documentReceta.receta.ingredientes}}</p>
+          </ion-row>
+          <ion-row>
+            <p><b>Pasos de elaboracion:</b> <br>{{documentReceta.receta.elaboracion}}</p>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
